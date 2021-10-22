@@ -1,0 +1,468 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+
+@model WebApplication3.ViewModels.GetFileVM
+<!DOCTYPE html>
+
+<style>
+
+*{
+    box-sizing: border-box;
+}
+body { font-family: Calibri; margin: 0; background-color: white; text-emphasis-color: white; font-size: 12px;}
+
+    .input-container {
+        display: flex;
+        width: 75%;
+        padding: 12px 20px 12px 5px;
+        box-sizing: border-box;
+        border: 2px solid #1abc9c;
+        border-radius: 15px;
+        background-color: #f2f2f2;
+        margin-right: 12.5%;
+    }
+    .icon{
+        padding: 8px;
+        min-width: 15px;
+        text-align: center;
+    }
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background-color: #f2f2f2;
+    }
+
+    .box {
+        height: 250px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        border-radius: 4px;
+        text-align: right;
+        font-size: 1.2em;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+        .box:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    #Description {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        height: 100px;
+        border-radius: 15px;
+        background-color: white;
+        margin-bottom: 2%;
+        text-align: right;
+    }
+
+
+    .header {
+        padding: 2%;
+        text-align: center;
+        background-color: navy;
+        color: white;
+        font-size: 1em;
+        font-style: italic;
+        border-radius: 4px;
+
+    }
+
+    .overlay {
+        background: #F9F9F9;
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        opacity: 0.95;
+    }
+
+    a.BtnCancel{
+        -webkit-appearance: button-bevel;
+        -moz-appearance: button-bevel;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        background-color: gray;
+        border-radius: 10px;
+        border: dashed;
+
+    }
+
+
+    .GreenBtn {
+        padding: 3px 50px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: none;
+        color: white;
+        background-color: #1abc9c;
+        border-radius: 10px;
+    }
+        .GreenBtn:hover {
+            background-color: gray;
+        }
+
+        .GreenBtn:active {
+            background-color: gray;
+            transform: translateY(4px);
+        }
+
+    #datepicker {
+        border-color: gray;
+
+    }
+    .iconCalender {
+        position: relative;
+        min-width: 5px;
+        text-align: center;
+    }
+
+    #last5btn{
+        background-color: white;
+        border-color: navy;
+    }
+    #last5btn:hover{
+        background-color: navy;
+        color: white;
+    }
+
+    .myContainer {
+        position: relative;
+        top: 50%;
+        background-color: white;
+    }
+
+    footer{
+        position: static;
+        text-align: center;
+        width: 100%;
+        padding: 100px;
+        background-color: lightgray;
+        bottom: 1px;
+        margin-top: 100px;
+    }
+
+    
+</style>
+
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width"/> 
+    <title>Home Page</title>    
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="~/Library/font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Library/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/library/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Library/bootstrap-rtl-3.3.4/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $("#BtnEnter").click(function () {
+                    $("#progBar").css("width", 0 + "%");
+                    $("#percent").text(0 + "%");
+                    $(".overlay").show();
+
+
+                    function UpdatePb() {
+                        var xhr = $.ajax(
+                            {
+                                type: "GET",
+                                url: "/FindFile/GetInfo",
+                                dataType: "json",
+                                success: function (data, status) {
+                                    if (status == "success") {
+                                        $("#detailsPB").text("מעמד: " + data.StatusPB + " || " + data.Counted + "/" + data.TotalFile);
+                                        $("#progBar").css("width", data.ResultProgBarValue + "%");
+                                        $("#percent").text(data.ResultProgBarValue + "%");
+
+                                        console.log(data.Directory + " || " + data.ResultProgBarValue + " || " + data.Counted + "/" + data.TotalFile + " || " + data.StatusPB);
+                                    } else {
+                                        alert("ERROR!")
+                                    }
+                                },
+                                complete: function (data) {
+                                    setTimeout(UpdatePb, 1000);
+                                }
+                            });
+
+                        $("#CancelPB").click(function () {
+                            xhr.abort();
+                            $("#progBar").css("width", 0 + "%");
+                            $("#percent").text(0 + "%");
+                            
+                        });
+
+                    }
+                    $(document).ready(function () {
+                        setTimeout(UpdatePb, 1000);
+                    });
+                });
+
+            });
+
+        });
+    </script>
+
+    <script>
+            $(function () {
+                $(document).ready(function () {
+                    $("#BtnEnter").mouseover(function () {
+                        if (!($("input[type=radio]:checked").size() > 0 && $("#CheckIcon").is(':visible'))){
+                            $("#NameInfo").hide();
+                            $("#DateInfo").hide();
+                            $("#DupInfo").hide();
+                            $("#WarningInfo").show();
+                            $("#BtnEnter").prop("disabled", true).css("background-color", "lightgray");
+                        } else {
+                            $("#BtnEnter").prop("disabled", false).css("background-color", "#1abc9c");
+
+                        }
+
+                    });
+
+                    $("input").click(function () {
+                        var radioValue = $("input[name='Checked']:checked").val();
+                        switch (radioValue) {
+                            case "Duplicate":
+                                $("#DupInfo").show();
+                                $("#NameInfo").hide();
+                                $("#DateInfo").hide();
+                                $("#WarningInfo").hide();
+                                $("#datepicker").fadeOut();
+                                $("#BtnEnter").prop("disabled", false).css("background-color", "#1abc9c");
+                                return;
+
+                            case "IllegalName":
+                                $("#DupInfo").hide();
+                                $("#NameInfo").show();
+                                $("#DateInfo").hide();
+                                $("#WarningInfo").hide();
+                                $("#datepicker").fadeOut();
+                                $("#BtnEnter").prop("disabled", false).css("background-color", "#1abc9c");
+                                return;
+
+                            case "CreationDate":
+                                $("#DupInfo").hide();
+                                $("#NameInfo").hide();
+                                $("#DateInfo").show();
+                                $("#WarningInfo").hide();
+                                $("#datepicker").fadeIn();
+                                $("#BtnEnter").prop("disabled", false).css("background-color", "#1abc9c");
+                                return;
+                        }
+
+                    })
+
+                })
+            })
+    </script>
+    
+
+    <script>
+            $(document).ready(function () {
+                $("#UserDirectory").focus(function () {
+                    $("#eraseBtn").show();
+                    $("#BtnEnter").prop("disabled", true);
+                    $("#BtnEnter").css("background-color", "lightgray");
+                });
+            });
+
+
+        function checkDirectory() {
+            var xhr = $.ajax(
+                {
+                    type: "GET",
+                    url: "/FindFile/GetInfo",
+                    dataType: "json",
+                    data: {
+                        Directory: $("#UserDirectory").val()
+                    },
+                    //processData: false,
+                    success: function (data, status) {
+                        if (data.IsDirectoryExists == true) {
+                            $("#CheckIcon").show();
+                            $("#CrossIcon").hide();
+                            $("#inputWarning").fadeOut();
+                            $(".input-container").css("border-color", "green");
+                            $("#BtnVerify").css("background-color", "green");
+                            $("#BtnEnter").prop("disabled", false);
+                            $("#BtnEnter").css("background-color", "#1abc9c");
+
+                        } else {
+                            $("#CrossIcon").show();
+                            $("#inputWarning").fadeIn();
+                            $("#CheckIcon").hide();
+                            $(".input-container").css("border-color", "red");
+                            $("#BtnVerify").css("background-color", "red");
+                            $("#BtnClear").prop("disabled", false);
+                        }
+                    }
+                });
+        }
+    </script>
+
+    <script>
+        function ClearEverything() {
+            if (confirm("רוצה למחוק?")) {
+                document.getElementById("UserDirectory").value = "";
+                $('input[name="Checked"]').attr('checked', false);
+                $("#CheckIcon").hide();
+                $("#CrossIcon").hide();
+                $(".input-container").css("border-color", "#1abc9c");
+                $("#BtnVerify").css("background-color", "#1abc9c");
+                $("#DupInfo").hide();
+                $("#NameInfo").hide();
+                $("#DateInfo").hide();
+                $("#WarningInfo").hide();
+            }
+        }
+    </script>
+</head>
+       
+<body>
+    <div class="container-fluid">
+        <div class="header">
+            <h1>חיפוש קבצים</h1>
+        </div>
+    </div>
+
+    <br />
+
+    <main class="main">
+
+        <form id="Form3" action="/FindFile/Exit" method="post"></form>
+
+        <form id="Form2" action="/FindFile/LastFiveResults" method="post"></form>
+
+        <form id="Form1" action="/FindFile/SearchFile" method="post">
+
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <div class="input-container">
+                        <i class="fa fa-check-circle icon" id="CheckIcon" style="color: green; display:none; font-size: 2em"></i>
+                        <i class="fa fa-close icon" id="CrossIcon" style="color: red; display:none; font-size: 2em"></i>
+                        <input type="text" class="input-field" id="UserDirectory" name="InputDirectory" placeholder="כתוב תיקיה..." />
+                        <button type="button" class="GreenBtn" id="BtnVerify" onclick="checkDirectory()"><span>בדוק</span></button>
+                    </div>
+                    <p id="inputWarning" style="display:none; color: red; margin-right: 15%"><strong>תיקיה זה אינו קיים</strong></p>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="box">
+                            <div class="col-lg-12">
+                                <input type="radio" id="DupBtn" style="margin: 20px" name="Checked" value="Duplicate" /> <span class="label label-default" style="font-size: 1.2em">חיפוש כפול</span><br />
+                                <button type="submit" id="last5btn" class="btn btn-lg btn-block" style="margin: 5px" name="Checked" value="Duplicate" form="Form2">חמשת החיפושים האחרונים</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="box">
+                            <div class="col-lg-12" style="height: 150px">
+                                <input type="radio" id="DateBtn" style="margin: 20px" name="Checked" value="CreationDate" /> <span class="label label-default" style="font-size: 1.2em">חיפוש תאריכים</span><br />
+                                <button type="submit" id="last5btn" class="btn btn-lg btn-block" style="margin: 5px" name="Checked" value="CreationDate" form="Form2">חמשת החיפושים האחרונים</button>
+
+                                <div id="datepicker" style="display: none">
+                                    <div class="form-group" style="margin-right: 25%">
+                                        <div class="col-md-3">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                                <input type="date" class="form-control" name="BeforeDate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="box">
+                            <div class="col-md-12">
+                                <input type="radio" id="NameBtn" name="Checked" style="margin: 20px " value="IllegalName" /> <span  class="label label-default" style="font-size: 1.2em">בדוק שמות קבצים וסיומת</span><br />
+                                <button type="submit" id="last5btn" style="margin: 5px; " class="btn btn-lg btn-block my-2" name="Checked" value="IllegalName" form="Form2">חמשת החיפושים האחרונים</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div id="Description">
+                        <div class="col-lg-12">
+                            <h4 style="font-style:italic"> <b>תיאור</b></h4>
+                            <p id="DupInfo" style="display:none"> בודק אם יש בספרייה קבצים עם כפילות בספריה הנתונה. מחזירה את הכתובות של קבצים כאלה</p>
+
+                            <p id="NameInfo" style="display:none"> בדיקת השמות הנתונים על ידי המשתמשים בספריה. מחזירה את הכתובת אם מוצאת קבצים בעייתיים.</p>
+
+                            <p id="DateInfo" style="display:none"> מציג את כל הקבצים שנוצרו לפני התאריך שנבחר. אנא בחר תאריך.</p>
+
+                            <p id="WarningInfo" style="display:none; color:red"> <strong>בחר סוג חיפוש או הכנס ספרייה תקפה!</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="submit" class="btn btn-block" id="BtnEnter" value="חפש" />
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-block btn-danger" id="BtnClear" onclick="ClearEverything()">מחוק <i class="fa fa-trash-o" style="color: black" id="eraseBtn"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="overlay">
+            <div class="myContainer">
+                <div class="container" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,1);">
+                    <div class="row" style="margin: 1%">
+                        <div class="col-lg-12">
+                            <div class="progress" style="background-color: navy;">
+                                <div class="progress-bar progress-bar-striped" id="progBar" role="progressbar" style="background-color: #1ABC9D; position:absolute; height: 20px"></div>
+                                <span id="percent" style="position: absolute; z-index:1000; margin-right: 50%; font-weight:bold; color: white;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 1%">
+                        <div class="col-lg-6">
+                            <p id="detailsPB"></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="/FindFile/Exit" class="btn btn-danger" id="CancelPB" style="float: left">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <footer class="container-fluid">
+        <p>© 2020-2021</p>
+    </footer>
+</body>
+</html>

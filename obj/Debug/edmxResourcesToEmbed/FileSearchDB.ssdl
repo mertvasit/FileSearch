@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FileSearchProject2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FileSearchProject2.dbo.DateSearch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DateSearch">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FileSearchProject2.dbo.DuplicateSearch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DuplicateSearch">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Executer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Path" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FileSearchProject2.dbo.NameSearch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NameSearch">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__DateSearc__Histo__31EC6D26">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="DateSearch" Type="Self.DateSearch" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Duplicate__Histo__32E0915F">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="DuplicateSearch" Type="Self.DuplicateSearch" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DuplicateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NameSearc__Histo__33D4B598">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="NameSearch" Type="Self.NameSearch" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NameSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FileSearchProject2ModelStoreContainer">
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DateSearch" EntityType="Self.DateSearch" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DateSearch].[HistoryID] AS [HistoryID], 
+    [DateSearch].[Directory] AS [Directory], 
+    [DateSearch].[Name] AS [Name], 
+    [DateSearch].[Extension] AS [Extension], 
+    [DateSearch].[CreationDate] AS [CreationDate], 
+    [DateSearch].[UserID] AS [UserID], 
+    [DateSearch].[Size] AS [Size]
+    FROM [dbo].[DateSearch] AS [DateSearch]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DuplicateSearch" EntityType="Self.DuplicateSearch" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DuplicateSearch].[HistoryID] AS [HistoryID], 
+    [DuplicateSearch].[Directory] AS [Directory], 
+    [DuplicateSearch].[Name] AS [Name], 
+    [DuplicateSearch].[Extension] AS [Extension], 
+    [DuplicateSearch].[CreationDate] AS [CreationDate], 
+    [DuplicateSearch].[UserID] AS [UserID], 
+    [DuplicateSearch].[Size] AS [Size]
+    FROM [dbo].[DuplicateSearch] AS [DuplicateSearch]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NameSearch" EntityType="Self.NameSearch" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NameSearch].[HistoryID] AS [HistoryID], 
+    [NameSearch].[Directory] AS [Directory], 
+    [NameSearch].[Name] AS [Name], 
+    [NameSearch].[Extension] AS [Extension], 
+    [NameSearch].[CreationDate] AS [CreationDate], 
+    [NameSearch].[UserID] AS [UserID], 
+    [NameSearch].[Size] AS [Size]
+    FROM [dbo].[NameSearch] AS [NameSearch]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__DateSearc__Histo__31EC6D26" Association="Self.FK__DateSearc__Histo__31EC6D26">
+      <End Role="History" EntitySet="History" />
+      <End Role="DateSearch" EntitySet="DateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Duplicate__Histo__32E0915F" Association="Self.FK__Duplicate__Histo__32E0915F">
+      <End Role="History" EntitySet="History" />
+      <End Role="DuplicateSearch" EntitySet="DuplicateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NameSearc__Histo__33D4B598" Association="Self.FK__NameSearc__Histo__33D4B598">
+      <End Role="History" EntitySet="History" />
+      <End Role="NameSearch" EntitySet="NameSearch" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

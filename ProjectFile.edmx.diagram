@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3d9150da5e147a8b2677fbe2c6035ea" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectFileModel.DateSearch" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectFileModel.DuplicateSearch" Width="1.5" PointX="1" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectFileModel.History" Width="1.5" PointX="6.125" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectFileModel.NameSearch" Width="1.5" PointX="6.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectFileModel.sysdiagrams" Width="1.5" PointX="10.625" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="ProjectFileModel.FK__DateSearc__Histo__5629CD9C" />
+        <AssociationConnector Association="ProjectFileModel.FK__Duplicate__Histo__5535A963" />
+        <AssociationConnector Association="ProjectFileModel.FK__NameSearc__Histo__571DF1D5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

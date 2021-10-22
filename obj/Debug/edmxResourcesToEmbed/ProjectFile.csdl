@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectFileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DateSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="Int32" Nullable="false" />
+    <Property Name="Directory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="History" Relationship="ProjectFileModel.FK__DateSearc__Histo__5629CD9C" FromRole="DateSearch" ToRole="History" />
+  </EntityType>
+  <EntityType Name="DuplicateSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="Int32" Nullable="false" />
+    <Property Name="Directory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="History" Relationship="ProjectFileModel.FK__Duplicate__Histo__5535A963" FromRole="DuplicateSearch" ToRole="History" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Executer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="DateSearch" Relationship="ProjectFileModel.FK__DateSearc__Histo__5629CD9C" FromRole="History" ToRole="DateSearch" />
+    <NavigationProperty Name="DuplicateSearch" Relationship="ProjectFileModel.FK__Duplicate__Histo__5535A963" FromRole="History" ToRole="DuplicateSearch" />
+    <NavigationProperty Name="NameSearch" Relationship="ProjectFileModel.FK__NameSearc__Histo__571DF1D5" FromRole="History" ToRole="NameSearch" />
+    <Property Name="SearchDate" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NameSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="Int32" Nullable="false" />
+    <Property Name="Directory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="History" Relationship="ProjectFileModel.FK__NameSearc__Histo__571DF1D5" FromRole="NameSearch" ToRole="History" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="FileSearchProject2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DateSearch" EntityType="Self.DateSearch" />
+    <EntitySet Name="DuplicateSearch" EntityType="Self.DuplicateSearch" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="NameSearch" EntityType="Self.NameSearch" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProjectFileModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProjectFileModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK__DateSearc__Histo__5629CD9C" Association="ProjectFileModel.FK__DateSearc__Histo__5629CD9C">
+      <End Role="History" EntitySet="History" />
+      <End Role="DateSearch" EntitySet="DateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Duplicate__Histo__5535A963" Association="ProjectFileModel.FK__Duplicate__Histo__5535A963">
+      <End Role="History" EntitySet="History" />
+      <End Role="DuplicateSearch" EntitySet="DuplicateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NameSearc__Histo__571DF1D5" Association="ProjectFileModel.FK__NameSearc__Histo__571DF1D5">
+      <End Role="History" EntitySet="History" />
+      <End Role="NameSearch" EntitySet="NameSearch" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <Association Name="FK__DateSearc__Histo__5629CD9C">
+    <End Type="ProjectFileModel.History" Role="History" Multiplicity="1" />
+    <End Type="ProjectFileModel.DateSearch" Role="DateSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Duplicate__Histo__5535A963">
+    <End Type="ProjectFileModel.History" Role="History" Multiplicity="1" />
+    <End Type="ProjectFileModel.DuplicateSearch" Role="DuplicateSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DuplicateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NameSearc__Histo__571DF1D5">
+    <End Type="ProjectFileModel.History" Role="History" Multiplicity="1" />
+    <End Type="ProjectFileModel.NameSearch" Role="NameSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NameSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

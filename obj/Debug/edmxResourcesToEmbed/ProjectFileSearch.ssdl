@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FileSearchProject2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DateSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DuplicateSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="HistoryId" />
+    </Key>
+    <Property Name="HistoryId" Type="int" Nullable="false" />
+    <Property Name="Executer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Path" Type="nvarchar" MaxLength="100" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NameSearch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HistoryID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__DateSearc__Histo__4AB81AF0">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="DateSearch" Type="Self.DateSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="HistoryId" />
+      </Principal>
+      <Dependent Role="DateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Duplicate__Histo__48CFD27E">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="DuplicateSearch" Type="Self.DuplicateSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="HistoryId" />
+      </Principal>
+      <Dependent Role="DuplicateSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NameSearc__Histo__49C3F6B7">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="NameSearch" Type="Self.NameSearch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="HistoryId" />
+      </Principal>
+      <Dependent Role="NameSearch">
+        <PropertyRef Name="HistoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FileSearchProject2ModelStoreContainer">
+    <EntitySet Name="DateSearch" EntityType="Self.DateSearch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DuplicateSearch" EntityType="Self.DuplicateSearch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NameSearch" EntityType="Self.NameSearch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DateSearc__Histo__4AB81AF0" Association="Self.FK__DateSearc__Histo__4AB81AF0">
+      <End Role="History" EntitySet="History" />
+      <End Role="DateSearch" EntitySet="DateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Duplicate__Histo__48CFD27E" Association="Self.FK__Duplicate__Histo__48CFD27E">
+      <End Role="History" EntitySet="History" />
+      <End Role="DuplicateSearch" EntitySet="DuplicateSearch" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NameSearc__Histo__49C3F6B7" Association="Self.FK__NameSearc__Histo__49C3F6B7">
+      <End Role="History" EntitySet="History" />
+      <End Role="NameSearch" EntitySet="NameSearch" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

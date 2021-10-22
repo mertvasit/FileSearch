@@ -1,0 +1,970 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3806EB05-E244-40CC-9704-937088D9F16B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication3</RootNamespace>
+    <AssemblyName>WebApplication3</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Expression.Prototyping.Runtime, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FindFileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DateSearch.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DuplicateSearch.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="History.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Massive-master\IdentifierAttribute.cs" />
+    <Compile Include="Library\Massive-master\Massive.cs" />
+    <Compile Include="Library\Massive-master\Massive.Oracle.cs" />
+    <Compile Include="Library\Massive-master\Massive.PostgreSQL.cs" />
+    <Compile Include="Library\Massive-master\Massive.Sqlite.cs" />
+    <Compile Include="Models\DateCheck.cs" />
+    <Compile Include="Models\DuplicateCheck.cs" />
+    <Compile Include="Models\MD5Hash.cs" />
+    <Compile Include="Models\ValidityCheck.cs" />
+    <Compile Include="Models\WordCheck.cs" />
+    <Compile Include="NameSearch.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFile.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectFile.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFile.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectFile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectFile.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ProjectFile.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\FileResultListVM.cs" />
+    <Compile Include="ViewModels\GetFileVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap.min.css" />
+    <Content Include="Library\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Library\bootstrap-3.3.5-dist\js\bootstrap.js" />
+    <Content Include="Library\bootstrap-3.3.5-dist\js\bootstrap.min.js" />
+    <Content Include="Library\bootstrap-3.3.5-dist\js\npm.js" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-grid.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-reboot.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap.min.css" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.bundle.js" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.js" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\.gitignore" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\.gitmodules" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\assets\ico\favicon.png" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\assets\js\holder.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\assets\js\html5shiv.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\assets\js\jquery.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\assets\js\respond.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1-rc1\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1-rc1\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1-rc2\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1-rc2\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.1\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.2\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.1.2\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc1\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc1\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc2\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc2\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc3\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc3\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc4\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc4\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc1\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc1\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc2\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc2\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-flipped.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-flipped.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\js\holder.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\js\html5shiv.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\js\jquery.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\js\respond.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\carousel\carousel.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\carousel\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\assets\flash\ZeroClipboard.swf" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\assets\js\ie-emulation-modes-warning.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\assets\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\assets\js\ie8-responsive-file-warning.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\assets\js\vendor\holder.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap-rtl.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap-theme.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap-theme.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap.min.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\js\bootstrap.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\js\bootstrap.min.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\blog\blog.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\blog\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\carousel\carousel.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\carousel\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\cover\cover.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\cover\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\dashboard\dashboard.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\dashboard\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\grid\grid.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\grid\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\jumbotron-narrow\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\jumbotron-narrow\jumbotron-narrow.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\jumbotron\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\jumbotron\jumbotron.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\justified-nav\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\justified-nav\justified-nav.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar-fixed-top\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar-fixed-top\navbar-fixed-top.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar-static-top\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar-static-top\navbar-static-top.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\navbar\navbar.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\non-responsive\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\non-responsive\non-responsive.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\offcanvas\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\offcanvas\offcanvas.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\offcanvas\offcanvas.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\signin\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\signin\signin.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\starter-template\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\starter-template\starter-template.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\sticky-footer-navbar\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\sticky-footer-navbar\sticky-footer-navbar.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\sticky-footer\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\sticky-footer\sticky-footer.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\theme\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\theme\theme.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\tooltip-viewport\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\tooltip-viewport\tooltip-viewport.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\examples\tooltip-viewport\tooltip-viewport.js" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\LICENSE.txt" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\form.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\index.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\input-groups.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\navbar.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\popovers.html" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\rtl\rtl.css" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\Gruntfile.js" />
+    <Content Include="Library\font-awesome-4.4.0\css\font-awesome.css" />
+    <Content Include="Library\font-awesome-4.4.0\css\font-awesome.min.css" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Library\font-awesome-4.4.0\HELP-US-OUT.txt" />
+    <Content Include="Library\Handlebars\handlebars-v4.0.4.js" />
+    <Content Include="Library\Handlebars\HandlebarsHelpers.js" />
+    <Content Include="Library\Hover-master\.gitignore" />
+    <Content Include="Library\Hover-master\css\demo-page.css" />
+    <Content Include="Library\Hover-master\css\hover-min.css" />
+    <Content Include="Library\Hover-master\css\hover.css" />
+    <Content Include="Library\Hover-master\eager.jpg" />
+    <Content Include="Library\Hover-master\Gruntfile.js" />
+    <Content Include="Library\Hover-master\hover.jpg" />
+    <Content Include="Library\Hover-master\index.html" />
+    <Content Include="Library\Hover-master\license.txt" />
+    <Content Include="Library\Hover-master\logo-transparent.png" />
+    <Content Include="Library\html2canvas\html2canvas.js" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-icons_222222_256x240.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\index.html" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.css" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.js" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.min.css" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.min.js" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.structure.css" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.structure.min.css" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.theme.css" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\jquery-ui.theme.min.css" />
+    <Content Include="Library\Massive-master\.gitattributes" />
+    <Content Include="Library\Massive-master\LICENSE.txt" />
+    <Content Include="Library\sweetalert-master\.gitignore" />
+    <Content Include="Library\sweetalert-master\dev\gulpfile-wrap-template.js" />
+    <Content Include="Library\sweetalert-master\dev\ie9.css" />
+    <Content Include="Library\sweetalert-master\dev\loader-animation.css" />
+    <Content Include="Library\sweetalert-master\dev\modules\default-params.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\handle-click.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\handle-dom.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\handle-key.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\handle-swal-dom.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\injected-html.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\set-params.js" />
+    <Content Include="Library\sweetalert-master\dev\modules\utils.js" />
+    <Content Include="Library\sweetalert-master\dev\sweetalert.es6.js" />
+    <Content Include="Library\sweetalert-master\dist\sweetalert-dev.js" />
+    <Content Include="Library\sweetalert-master\dist\sweetalert.css" />
+    <Content Include="Library\sweetalert-master\dist\sweetalert.min.js" />
+    <Content Include="Library\sweetalert-master\example\example.css" />
+    <Content Include="Library\sweetalert-master\example\images\logo_big%402x.png" />
+    <Content Include="Library\sweetalert-master\example\images\logo_big.png" />
+    <Content Include="Library\sweetalert-master\example\images\logo_small%402x.png" />
+    <Content Include="Library\sweetalert-master\example\images\logo_small.png" />
+    <Content Include="Library\sweetalert-master\example\images\te-logo-small.svg" />
+    <Content Include="Library\sweetalert-master\example\images\thumbs-up.jpg" />
+    <Content Include="Library\sweetalert-master\example\images\vs_icon%402x.png" />
+    <Content Include="Library\sweetalert-master\example\images\vs_icon.png" />
+    <Content Include="Library\sweetalert-master\gulpfile.js" />
+    <Content Include="Library\sweetalert-master\index.html" />
+    <Content Include="Library\sweetalert-master\sweetalert.gif" />
+    <Content Include="Library\sweetalert-master\test\index.html" />
+    <Content Include="Library\sweetalert-master\test\tests.js" />
+    <Content Include="Library\sweetalert-master\themes\facebook\facebook.css" />
+    <Content Include="Library\sweetalert-master\themes\google\google.css" />
+    <Content Include="Library\sweetalert-master\themes\twitter\twitter.css" />
+    <Content Include="Library\sweetalert2-master\.gitignore" />
+    <Content Include="Library\sweetalert2-master\dist\sweetalert2.css" />
+    <Content Include="Library\sweetalert2-master\dist\sweetalert2.min.js" />
+    <Content Include="Library\sweetalert2-master\example\example.css" />
+    <Content Include="Library\sweetalert2-master\example\favicon.ico" />
+    <Content Include="Library\sweetalert2-master\example\gulpfile.js" />
+    <Content Include="Library\sweetalert2-master\example\images\thumbs-up.jpg" />
+    <Content Include="Library\sweetalert2-master\example\images\vs_icon%402x.png" />
+    <Content Include="Library\sweetalert2-master\example\images\vs_icon.png" />
+    <Content Include="Library\sweetalert2-master\example\index.html" />
+    <Content Include="Library\sweetalert2-master\gulpfile.js" />
+    <Content Include="Library\sweetalert2-master\src\sweetalert2.js" />
+    <Content Include="Library\sweetalert2-master\sweetalert.gif" />
+    <Content Include="ProjectFile.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectFile.edmx</DependentUpon>
+      <LastGenOutput>ProjectFile.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ProjectFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectFile.edmx</DependentUpon>
+      <LastGenOutput>ProjectFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap-datepicker.he.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Library\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <Content Include="Library\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Library\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Library\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Library\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\.travis.yml" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\bower.json" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc3\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.2.0-rc4\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc1\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1-rc2\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\cdnjs\3.3.1\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-flipped.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\dist\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap-rtl.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap-theme.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\css\bootstrap.css.map" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\examples\originals\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\alerts-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\badges-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\bootstrap-flipped.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\bootstrap-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\button-groups-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\carousel-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\close-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\dropdowns-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\flipped.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\forms-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\grid-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\input-groups-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\list-group-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\media-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins-flipped.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins\border-radius-flipped.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins\gradients-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins\grid-framework-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins\grid-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\mixins\pagination-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\modals-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\navbar-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\navs-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\normalize-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\pager-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\pagination-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\panels-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\popovers-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\progress-bars-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\responsive-embed-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\tables-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\type-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\utilities-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\less\variables-rtl.less" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\LICENSE.bootstrap" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\package.json" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\README.md" />
+    <Content Include="Library\bootstrap-rtl-3.3.4\UNLICENSE" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Library\font-awesome-4.4.0\fonts\FontAwesome.otf" />
+    <Content Include="Library\font-awesome-4.4.0\less\animated.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\bordered-pulled.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\core.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\fixed-width.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\font-awesome.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\icons.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\larger.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\list.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\mixins.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\path.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\rotated-flipped.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\stacked.less" />
+    <Content Include="Library\font-awesome-4.4.0\less\variables.less" />
+    <Content Include="Library\font-awesome-4.4.0\scss\font-awesome.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_animated.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_bordered-pulled.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_core.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_fixed-width.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_icons.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_larger.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_list.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_mixins.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_path.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_rotated-flipped.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_stacked.scss" />
+    <Content Include="Library\font-awesome-4.4.0\scss\_variables.scss" />
+    <Content Include="Library\Hover-master\.editorconfig" />
+    <Content Include="Library\Hover-master\bower.json" />
+    <Content Include="Library\Hover-master\CONTRIBUTING.md" />
+    <Content Include="Library\Hover-master\HISTORY.md" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_bob.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_bounce-in.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_bounce-out.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_buzz-out.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_buzz.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_float.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_grow-rotate.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_grow.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_hang.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_pop.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_pulse-grow.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_pulse-shrink.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_pulse.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_push.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_rotate.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_shrink.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_sink.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_skew-backward.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_skew-forward.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_skew.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-bottom.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-horizontal.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-skew.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-to-bottom-right.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-to-top-right.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-top.less" />
+    <Content Include="Library\Hover-master\less\effects\2d-transitions\_wobble-vertical.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_back-pulse.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_bounce-to-bottom.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_bounce-to-left.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_bounce-to-right.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_bounce-to-top.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_fade.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_radial-in.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_radial-out.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_rectangle-in.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_rectangle-out.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_shutter-in-horizontal.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_shutter-in-vertical.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_shutter-out-horizontal.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_shutter-out-vertical.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_sweep-to-bottom.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_sweep-to-left.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_sweep-to-right.less" />
+    <Content Include="Library\Hover-master\less\effects\background-transitions\_sweep-to-top.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_border-fade.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_hollow.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_outline-in.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_outline-out.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_overline-from-center.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_overline-from-left.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_overline-from-right.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_overline-reveal.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_reveal.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_ripple-in.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_ripple-out.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_round-corners.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_trim.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_underline-from-center.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_underline-from-left.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_underline-from-right.less" />
+    <Content Include="Library\Hover-master\less\effects\border-transitions\_underline-reveal.less" />
+    <Content Include="Library\Hover-master\less\effects\curls\_curl-bottom-left.less" />
+    <Content Include="Library\Hover-master\less\effects\curls\_curl-bottom-right.less" />
+    <Content Include="Library\Hover-master\less\effects\curls\_curl-top-left.less" />
+    <Content Include="Library\Hover-master\less\effects\curls\_curl-top-right.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-back.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-bob.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-bounce-out.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-bounce.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-buzz-out.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-buzz.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-down.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-drop.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-fade.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-float-away.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-float.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-forward.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-grow-rotate.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-grow.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-hang.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-pop.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-pulse-grow.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-pulse-shrink.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-pulse.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-push.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-rotate.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-shrink.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-sink-away.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-sink.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-spin.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-up.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-wobble-horizontal.less" />
+    <Content Include="Library\Hover-master\less\effects\icons\_icon-wobble-vertical.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_box-shadow-inset.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_box-shadow-outset.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_float-shadow.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_glow.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_grow-shadow.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_shadow-radial.less" />
+    <Content Include="Library\Hover-master\less\effects\shadow-and-glow-transitions\_shadow.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-bottom.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-float-bottom.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-float-left.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-float-right.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-float-top.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-left.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-right.less" />
+    <Content Include="Library\Hover-master\less\effects\speech-bubbles\_bubble-top.less" />
+    <Content Include="Library\Hover-master\less\hover.less" />
+    <Content Include="Library\Hover-master\less\_hacks.less" />
+    <Content Include="Library\Hover-master\less\_mixins.less" />
+    <Content Include="Library\Hover-master\less\_options.less" />
+    <Content Include="Library\Hover-master\package.json" />
+    <Content Include="Library\Hover-master\README.md" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_bob.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_bounce-in.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_bounce-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_buzz-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_buzz.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_float.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_grow-rotate.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_grow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_hang.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_pop.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_pulse-grow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_pulse-shrink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_pulse.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_push.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_rotate.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_shrink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_sink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_skew-backward.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_skew-forward.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_skew.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-bottom.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-horizontal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-skew.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-to-bottom-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-to-top-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-top.scss" />
+    <Content Include="Library\Hover-master\scss\effects\2d-transitions\_wobble-vertical.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_back-pulse.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_bounce-to-bottom.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_bounce-to-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_bounce-to-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_bounce-to-top.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_fade.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_radial-in.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_radial-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_rectangle-in.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_rectangle-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_shutter-in-horizontal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_shutter-in-vertical.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_shutter-out-horizontal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_shutter-out-vertical.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_sweep-to-bottom.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_sweep-to-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_sweep-to-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\background-transitions\_sweep-to-top.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_border-fade.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_hollow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_outline-in.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_outline-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_overline-from-center.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_overline-from-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_overline-from-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_overline-reveal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_reveal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_ripple-in.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_ripple-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_round-corners.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_trim.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_underline-from-center.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_underline-from-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_underline-from-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\border-transitions\_underline-reveal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\curls\_curl-bottom-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\curls\_curl-bottom-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\curls\_curl-top-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\curls\_curl-top-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-back.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-bob.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-bounce-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-bounce.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-buzz-out.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-buzz.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-down.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-drop.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-fade.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-float-away.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-float.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-forward.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-grow-rotate.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-grow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-hang.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-pop.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-pulse-grow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-pulse-shrink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-pulse.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-push.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-rotate.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-shrink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-sink-away.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-sink.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-spin.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-up.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-wobble-horizontal.scss" />
+    <Content Include="Library\Hover-master\scss\effects\icons\_icon-wobble-vertical.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_box-shadow-inset.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_box-shadow-outset.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_float-shadow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_glow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_grow-shadow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_shadow-radial.scss" />
+    <Content Include="Library\Hover-master\scss\effects\shadow-and-glow-transitions\_shadow.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-bottom.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-float-bottom.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-float-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-float-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-float-top.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-left.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-right.scss" />
+    <Content Include="Library\Hover-master\scss\effects\speech-bubbles\_bubble-top.scss" />
+    <Content Include="Library\Hover-master\scss\hover.scss" />
+    <Content Include="Library\Hover-master\scss\_hacks.scss" />
+    <Content Include="Library\Hover-master\scss\_mixins.scss" />
+    <Content Include="Library\Hover-master\scss\_options.scss" />
+    <Content Include="Library\Hover-master\Thumbs.db" />
+    <Content Include="Library\jquery-ui-1.10.4.custom.zip" />
+    <Content Include="Library\jquery-ui-1.11.4.custom\images\Thumbs.db" />
+    <Content Include="Library\Massive-master\README.markdown" />
+    <Content Include="Library\sweetalert-master\.editorconfig" />
+    <Content Include="Library\sweetalert-master\.jshintrc" />
+    <Content Include="Library\sweetalert-master\.travis.yml" />
+    <Content Include="Library\sweetalert-master\bower.json" />
+    <Content Include="Library\sweetalert-master\dev\sweetalert.scss" />
+    <Content Include="Library\sweetalert-master\example\example.scss" />
+    <Content Include="Library\sweetalert-master\LICENSE" />
+    <Content Include="Library\sweetalert-master\package.json" />
+    <Content Include="Library\sweetalert-master\README.md" />
+    <Content Include="Library\sweetalert-master\themes\facebook\facebook.scss" />
+    <Content Include="Library\sweetalert-master\themes\google\google.scss" />
+    <Content Include="Library\sweetalert-master\themes\twitter\twitter.scss" />
+    <Content Include="Library\sweetalert-master\Thumbs.db" />
+    <Content Include="Library\sweetalert2-master\.editorconfig" />
+    <Content Include="Library\sweetalert2-master\.jscs.json" />
+    <Content Include="Library\sweetalert2-master\.jshintrc" />
+    <Content Include="Library\sweetalert2-master\.scss-lint.yml" />
+    <Content Include="Library\sweetalert2-master\bower.json" />
+    <Content Include="Library\sweetalert2-master\example\example.scss" />
+    <Content Include="Library\sweetalert2-master\example\images\Thumbs.db" />
+    <Content Include="Library\sweetalert2-master\LICENSE" />
+    <Content Include="Library\sweetalert2-master\package.json" />
+    <Content Include="Library\sweetalert2-master\README.md" />
+    <Content Include="Library\sweetalert2-master\src\sweetalert2.scss" />
+    <Content Include="Library\sweetalert2-master\Thumbs.db" />
+    <Content Include="Content\themes\base\images\Thumbs.db" />
+    <EntityDeploy Include="ProjectFile.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProjectFile.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ProjectFile.edmx.diagram">
+      <DependentUpon>ProjectFile.edmx</DependentUpon>
+    </Content>
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\css\bootstrap.min.css.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.js.map" />
+    <Content Include="Library\bootstrap-4.5.0-dist\js\bootstrap.min.js.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chrome.js" />
+    <Content Include="Scripts\chromeOld.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\FindFile\Index.cshtml" />
+    <Content Include="Views\FindFile\PrintResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Library\bootstrap-rtl-3.3.4\bootstrap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2556</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2556/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
